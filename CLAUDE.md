@@ -4,7 +4,7 @@
 
 Site institucional estático da Knebel & Knebel LTDA (CNPJ 43.442.156/0001-35).
 Astro v6, output estático, zero JS no cliente, hospedado no GitHub Pages (knebel.inf.br).
-Commits sem prefixo Jira — projeto fora do contexto Dawntech.
+Commits sem prefixo Jira.
 
 ## Comandos
 
@@ -28,9 +28,6 @@ Commits sem prefixo Jira — projeto fora do contexto Dawntech.
 | `--color-card-bg` | `#ffffff` | Fundo de cards |
 | `--gradient-brand` | `linear-gradient(90deg, #0369a1, #d97706)` | Gradiente navy→âmbar |
 | `--gradient-contact-bg` | `linear-gradient(180deg, #fdfaf4, #f0eade)` | Fundo da seção contato |
-
-Nunca usar roxo/violeta — associado a conteúdo gerado por IA.
-Nunca usar em dash (—) em copy do site.
 
 ### Efeito Aurora Light
 
@@ -91,4 +88,3 @@ Blobs decorativos com `position: absolute`, `border-radius: 50%`, `filter: blur(
 Push para `main` dispara GitHub Actions (`.github/workflows/deploy.yml`).
 `peaceiris/actions-gh-pages@v3` publica `dist/` no branch `gh-pages`.
 GitHub Pages configurado para servir `gh-pages` com domínio customizado `knebel.inf.br`.
-DNS: registro CNAME apontando para `<usuario>.github.io`.
