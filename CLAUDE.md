@@ -86,5 +86,5 @@ Blobs decorativos com `position: absolute`, `border-radius: 50%`, `filter: blur(
 ## Deploy
 
 Push para `main` dispara GitHub Actions (`.github/workflows/deploy.yml`).
-`peaceiris/actions-gh-pages@v3` publica `dist/` no branch `gh-pages`.
+`peaceiris/actions-gh-pages@v4` publica `dist/` no branch `gh-pages`.
 GitHub Pages configurado para servir `gh-pages` com domínio customizado `knebel.inf.br`.
