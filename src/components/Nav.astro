@@ -1,0 +1,115 @@
+---
+import type { UI } from '../i18n/types';
+import type { Lang } from '../i18n/index';
+
+interface Props {
+  t: UI['nav'];
+  lang: Lang;
+}
+
+const { t, lang } = Astro.props;
+const otherLang = lang === 'pt' ? 'en' : 'pt';
+const currentLangLabel = lang.toUpperCase();
+---
+
+<nav>
+  <div class="nav-inner">
+    <a href={`/${lang}/`} class="nav-logo">
+      <span class="nav-logo-mark">K&amp;K</span>
+      <span class="nav-logo-full">Knebel &amp; Knebel</span>
+    </a>
+    <div class="nav-links">
+      <a href="#servicos">{t.services}</a>
+      <a href="#contato">{t.contact}</a>
+      <a href={`/${otherLang}/`} class="lang-switcher">🌐 {currentLangLabel}</a>
+      <a href="#contato" class="nav-cta">{t.cta}</a>
+    </div>
+  </div>
+</nav>
+
+<style>
+  nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    background: rgba(253, 250, 244, 0.92);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border-bottom: 1px solid rgba(3, 105, 161, 0.1);
+  }
+
+  .nav-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0.875rem 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .nav-logo {
+    text-decoration: none;
+    display: flex;
+    align-items: baseline;
+    gap: 0.5rem;
+  }
+
+  .nav-logo-mark {
+    font-size: 0.9rem;
+    font-weight: 900;
+    color: var(--color-text);
+    letter-spacing: -0.3px;
+  }
+
+  .nav-logo-full {
+    font-size: 0.7rem;
+    color: var(--color-text-muted);
+    font-weight: 400;
+  }
+
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+  }
+
+  .nav-links a {
+    text-decoration: none;
+    font-size: 0.8rem;
+    color: var(--color-text-secondary);
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover {
+    color: var(--color-primary);
+  }
+
+  .nav-links .lang-switcher {
+    font-size: 0.75rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 0.2rem;
+  }
+
+  .nav-cta {
+    background: var(--gradient-brand);
+    color: white !important;
+    padding: 0.4rem 1rem;
+    border-radius: 20px;
+    font-weight: 600;
+    font-size: 0.75rem !important;
+  }
+
+  @media (max-width: 600px) {
+    .nav-logo-full {
+      display: none;
+    }
+
+    .nav-links a:not(.nav-cta):not(.lang-switcher) {
+      display: none;
+    }
+  }
+</style>

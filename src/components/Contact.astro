@@ -1,0 +1,175 @@
+---
+import type { UI } from '../i18n/types';
+
+interface Props {
+  t: UI['contact'];
+}
+
+const { t } = Astro.props;
+---
+
+<section class="contact" id="contato">
+  <div class="contact-inner">
+    <p class="section-label">{t.label}</p>
+    <h2 class="contact-heading">{t.heading}</h2>
+    <p class="contact-description">{t.description}</p>
+    <div class="contact-cards">
+      <a href={`mailto:${t.email}`} class="contact-card">
+        <div class="contact-icon contact-icon--gradient">✉</div>
+        <div class="contact-info">
+          <span class="contact-label-text">{t.general}</span>
+          <span class="contact-email">{t.email}</span>
+        </div>
+      </a>
+      <div class="contact-partners">
+        <div class="contact-card">
+          <div class="contact-icon contact-icon--navy">F</div>
+          <div class="contact-info">
+            <span class="contact-label-text">Francisco</span>
+            <a href="mailto:francisco@knebel.inf.br" class="contact-email">francisco@knebel.inf.br</a>
+            <a href="https://franciscoknebel.com" target="_blank" rel="noopener noreferrer" class="contact-website">franciscoknebel.com</a>
+          </div>
+        </div>
+        <a href="mailto:norberto@knebel.inf.br" class="contact-card">
+          <div class="contact-icon contact-icon--amber">N</div>
+          <div class="contact-info">
+            <span class="contact-label-text">Norberto</span>
+            <span class="contact-email">norberto@knebel.inf.br</span>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .contact {
+    padding: 5rem 1.5rem;
+    background: var(--gradient-contact-bg);
+    border-top: 1px solid rgba(3, 105, 161, 0.08);
+  }
+
+  .contact-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .section-label {
+    font-size: 0.65rem;
+    letter-spacing: 0.25rem;
+    text-transform: uppercase;
+    color: var(--color-text-muted);
+    margin-bottom: 0.5rem;
+  }
+
+  .contact-heading {
+    font-size: 2rem;
+    font-weight: 800;
+    color: var(--color-text);
+    letter-spacing: -0.03em;
+    margin-bottom: 0.5rem;
+  }
+
+  .contact-description {
+    font-size: 0.9rem;
+    color: var(--color-text-secondary);
+    margin-bottom: 2rem;
+  }
+
+  .contact-cards {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    max-width: 560px;
+  }
+
+  .contact-card {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    background: var(--color-card-bg);
+    border: 1px solid rgba(3, 105, 161, 0.12);
+    border-radius: 12px;
+    padding: 1rem 1.25rem;
+    text-decoration: none;
+    transition: box-shadow 0.2s;
+  }
+
+  .contact-card:hover {
+    box-shadow: 0 4px 12px rgba(3, 105, 161, 0.1);
+  }
+
+  .contact-icon {
+    width: 36px;
+    height: 36px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+
+  .contact-icon--gradient {
+    background: var(--gradient-brand);
+    color: white;
+  }
+
+  .contact-icon--navy {
+    background: #eff6ff;
+    color: var(--color-primary);
+  }
+
+  .contact-icon--amber {
+    background: #fffbeb;
+    color: var(--color-accent);
+  }
+
+  .contact-info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.125rem;
+  }
+
+  .contact-label-text {
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1rem;
+    color: var(--color-text-muted);
+  }
+
+  .contact-email {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--color-text);
+    text-decoration: none;
+  }
+
+  .contact-email:hover {
+    text-decoration: underline;
+  }
+
+  .contact-website {
+    font-size: 0.75rem;
+    color: var(--color-primary);
+    text-decoration: none;
+    font-weight: 500;
+  }
+
+  .contact-website:hover {
+    text-decoration: underline;
+  }
+
+  .contact-partners {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.75rem;
+  }
+
+  @media (max-width: 480px) {
+    .contact-partners {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

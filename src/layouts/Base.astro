@@ -1,0 +1,50 @@
+---
+import '../styles/global.css';
+import type { Lang } from '../i18n/index';
+
+interface Props {
+  lang: Lang;
+  title?: string;
+  description?: string;
+}
+
+const DEFAULT_TITLES: Record<Lang, string> = {
+  pt: 'Knebel & Knebel | Consultoria em TI e Desenvolvimento de Software',
+  en: 'Knebel & Knebel | IT Consulting and Software Development',
+};
+
+const DEFAULT_DESCRIPTIONS: Record<Lang, string> = {
+  pt: 'Knebel & Knebel oferece desenvolvimento de software, consultoria em TI e suporte técnico. Atendimento remoto em todo o Brasil.',
+  en: 'Knebel & Knebel offers software development, IT consulting and technical support. Remote service across Brazil.',
+};
+
+const { lang, title: titleProp, description: descProp } = Astro.props;
+const title = titleProp ?? DEFAULT_TITLES[lang];
+const description = descProp ?? DEFAULT_DESCRIPTIONS[lang];
+
+const site = 'https://knebel.inf.br';
+const htmlLang = lang === 'pt' ? 'pt-BR' : 'en';
+const canonicalURL = `${site}/${lang}/`;
+---
+
+<!doctype html>
+<html lang={htmlLang}>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonicalURL} />
+    <link rel="alternate" hreflang="pt-BR" href={`${site}/pt/`} />
+    <link rel="alternate" hreflang="en" href={`${site}/en/`} />
+    <link rel="alternate" hreflang="x-default" href={`${site}/pt/`} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:type" content="website" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  </head>
+  <body>
+    <slot />
+  </body>
+</html>
